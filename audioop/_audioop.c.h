@@ -53,10 +53,26 @@ void
 _LTS_PyArg_BadArgument(const char *fname, const char *displayname,
                    const char *expected, PyObject *arg)
 {
+    PyTypeObject *arg_type = (PyTypeObject *)PyObject_Type(arg);
+
+    if (arg_type == NULL)
+        return;
+
+    PyObject *arg_type_name = PyType_GetName(arg_type);
+
+    if (arg_type_name == NULL)
+        Py_DECREF(arg_type);
+        return;
+
+    const char *arg_type_name_chars = PyUnicode_AsUTF8AndSize(arg_type_name, NULL);
+
     PyErr_Format(PyExc_TypeError,
                  "%.200s() %.200s must be %.50s, not %.50s",
                  fname, displayname, expected,
-                 arg == Py_None ? "None" : Py_TYPE(arg)->tp_name);
+                 arg == Py_None ? "None" : arg_type_name_chars);
+
+    Py_DECREF(arg_type);
+    Py_DECREF(arg_type_name);
 }
 
 /* Get a C int from an int object or any object that has an __index__

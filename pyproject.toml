@@ -1,5 +1,38 @@
 [build-system]
-requires = [
-    "setuptools >= 46.4.0",
-]
+requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "audioop"
+description = "LTS Port of Python audioop"
+requires-python = ">=3.12"
+version = "1.0.0"
+readme = "README.md"
+license = { text = "MIT" }
+maintainers = [{ name = "AbstractUmbra", email = "umbra@abstractumbra.dev" }]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+
+[project.urls]
+Homepage = "https://github.com/AbstractUmbra/audioop"
+
+[tool.setuptools.exclude-package-data]
+# Exclude these source files from the final result when packing a wheel.
+audioop = ["*.c", "*.h"]
+
+[tool.pyright]
+include = ["audioop"]
+ignore = ["audioop/__init__.py", "tests"]
+pythonVersion = "3.13"
+typeCheckingMode = "strict"
+
+reportPrivateUsage = "none"
+reportMissingTypeStubs = "none"
+reportUnnecessaryTypeIgnoreComment = "warning"
