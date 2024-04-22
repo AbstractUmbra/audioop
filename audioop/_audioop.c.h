@@ -60,9 +60,10 @@ _LTS_PyArg_BadArgument(const char *fname, const char *displayname,
 
     PyObject *arg_type_name = PyType_GetName(arg_type);
 
-    if (arg_type_name == NULL)
+    if (arg_type_name == NULL) {
         Py_DECREF(arg_type);
         return;
+    }
 
     const char *arg_type_name_chars = PyUnicode_AsUTF8AndSize(arg_type_name, NULL);
 
