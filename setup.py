@@ -8,14 +8,14 @@ else:
 
     class bdist_wheel_abi3(bdist_wheel):
         def get_tag(self) -> tuple[str, str, str]:
-            python, abi, plat = super().get_tag()
+            python, abi, plat = super().get_tag()  # pyright: ignore [reportUnknownVariableType]
 
             if python.startswith("cp"):
                 import sys
 
-                return f"cp3{sys.version_info[1]}", "abi3", plat
+                return f"cp3{sys.version_info[1]}", "abi3", plat  # pyright: ignore [reportUnknownVariableType]
 
-            return python, abi, plat
+            return python, abi, plat  # pyright: ignore [reportUnknownVariableType]
 
     cmdclass = {"bdist_wheel": bdist_wheel_abi3}
 
