@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "audioop"
 description = "LTS Port of Python audioop"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 version = "1.0.0"
 readme = "README.md"
 license = { text = "MIT" }
@@ -15,6 +15,7 @@ classifiers = [
     "Intended Audience :: Developers",
     "Natural Language :: English",
     "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: Implementation :: CPython",
 ]
@@ -29,7 +30,7 @@ audioop = ["*.c", "*.h"]
 [tool.pyright]
 include = ["audioop"]
 ignore = ["audioop/__init__.py", "tests"]
-pythonVersion = "3.13"
+pythonVersion = "3.12"
 typeCheckingMode = "strict"
 
 reportPrivateUsage = "none"
