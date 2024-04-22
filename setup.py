@@ -12,9 +12,7 @@ else:
             python, abi, plat = super().get_tag()
 
             if python.startswith("cp"):
-                import sys
-
-                return f"cp3{sys.version_info[1]}", "abi3", plat
+                return "cp312", "abi3", plat
 
             return python, abi, plat
 
