@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
+    types: [opened, reopened, synchronize]
 
 jobs:
   install_and_test:
@@ -29,6 +33,7 @@ jobs:
           python tests/test_audioop.py
 
   build_wheels:
+    if: github.event_name == 'push'
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     needs: [install_and_test]
