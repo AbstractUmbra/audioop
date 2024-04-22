@@ -25,7 +25,8 @@ extensions = [
         name="audioop._audioop",
         sources=["audioop/_audioop.c"],
         depends=["audioop/_audioop.c.h"],
-        # Technically with 3.12 because of the Limited API version, but to avoid clobbering, install is limited to >=3.13.
+        # Technically compatible with 3.12 because of the Limited API version, but to avoid clobbering,
+        # install is limited to >=3.13 in package metadata.
         define_macros=[("Py_LIMITED_API", "0x030C0000")],
         py_limited_api=True,
     )
