@@ -23,7 +23,7 @@ classifiers = [
 Homepage = "https://github.com/AbstractUmbra/audioop"
 
 [tool.setuptools.exclude-package-data]
-# Exclude these source files from the final result when packing a wheel.
+# Keep just the shared object when packing a wheel, not the C source code.
 audioop = ["*.c", "*.h"]
 
 [tool.pyright]
