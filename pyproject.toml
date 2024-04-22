@@ -8,7 +8,7 @@ description = "LTS Port of Python audioop"
 requires-python = ">=3.12"
 version = "1.0.0"
 readme = "README.md"
-license = { text = "MIT" }
+license = { text = "PSF-2.0" }
 maintainers = [{ name = "AbstractUmbra", email = "umbra@abstractumbra.dev" }]
 classifiers = [
     "Development Status :: 4 - Beta",
