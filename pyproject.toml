@@ -3,7 +3,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "audioop"
+name = "audioop-lts"
 description = "LTS Port of Python audioop"
 requires-python = ">=3.13"
 version = "1.0.0"
