@@ -1,5 +1,38 @@
 [build-system]
-requires = [
-    "setuptools >= 46.4.0",
-]
+requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "audioop-lts"
+description = "LTS Port of Python audioop"
+requires-python = ">=3.13"
+version = "1.0.0"
+readme = "README.md"
+license = { text = "PSF-2.0" }
+maintainers = [{ name = "AbstractUmbra", email = "umbra@abstractumbra.dev" }]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+
+[project.urls]
+Homepage = "https://github.com/AbstractUmbra/audioop"
+
+[tool.setuptools.exclude-package-data]
+# Keep just the shared object when packing a wheel, not the C source code.
+audioop = ["*.c", "*.h"]
+
+[tool.pyright]
+include = ["audioop"]
+ignore = [
+    "audioop/__init__.py", # Pyright can't see the shared object being imported from.
+]
+pythonVersion = "3.13"
+typeCheckingMode = "strict"
+
+reportPrivateUsage = "none"
+reportUnnecessaryTypeIgnoreComment = "warning"

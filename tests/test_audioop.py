@@ -1,16 +1,19 @@
 import sys
 import unittest
-import audioop
+import audioop  # pyright: ignore[reportShadowedImports]
+from collections.abc import Callable
 
 
-def pack(width, data):
+def pack(width: int, data: tuple[int, ...]) -> bytes:
     return b''.join(v.to_bytes(width, sys.byteorder, signed=True) for v in data)
 
-def unpack(width, data):
+def unpack(width: int, data: bytes) -> list[int]:
     return [int.from_bytes(data[i: i + width], sys.byteorder, signed=True)
             for i in range(0, len(data), width)]
 
-packs = {w: (lambda *data, width=w: pack(width, data)) for w in (1, 2, 3, 4)}
+packs: dict[int, Callable[[*tuple[int, ...]], bytes]] = {
+    w: (lambda *data, width=w: pack(width, data)) for w in (1, 2, 3, 4)
+}
 maxvalues = {w: (1 << (8 * w - 1)) - 1 for w in (1, 2, 3, 4)}
 minvalues = {w: -1 << (8 * w - 1) for w in (1, 2, 3, 4)}
 

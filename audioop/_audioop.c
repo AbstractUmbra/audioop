@@ -33,6 +33,13 @@
 
 #include "Python.h"
 
+#define _LTS_Py_SETREF(op, op2)                      \
+    do {                                        \
+        PyObject *_py_tmp = (PyObject *)(op);   \
+        (op) = (op2);                           \
+        Py_DECREF(_py_tmp);                     \
+    } while (0)
+
 static const int maxvals[] = {0, 0x7F, 0x7FFF, 0x7FFFFF, 0x7FFFFFFF};
 /* -1 trick is needed on Windows to support -0x80000000 without a warning */
 static const int minvals[] = {0, -0x80, -0x8000, -0x800000, -0x7FFFFFFF-1};
@@ -1469,7 +1476,7 @@ audioop_ratecv_impl(PyObject *module, Py_buffer *fragment, int width,
                 len = (Py_ssize_t)(ncp - PyBytes_AsString(str));
                 rv = PyBytes_FromStringAndSize
                     (PyBytes_AsString(str), len);
-                Py_SETREF(str, rv);
+                _LTS_Py_SETREF(str, rv);
                 if (str == NULL)
                     goto exit;
                 rv = Py_BuildValue("(O(iO))", str, d, samps);
@@ -1899,7 +1906,7 @@ audioop_adpcm2lin_impl(PyObject *module, Py_buffer *fragment, int width,
     return rv;
 }
 
-#include "clinic/audioop.c.h"
+#include "_audioop.c.h"
 
 static PyMethodDef audioop_methods[] = {
     AUDIOOP_MAX_METHODDEF
@@ -1990,7 +1997,7 @@ static struct PyModuleDef audioopmodule = {
 };
 
 PyMODINIT_FUNC
-PyInit_audioop(void)
+PyInit__audioop(void)
 {
     return PyModuleDef_Init(&audioopmodule);
 }
