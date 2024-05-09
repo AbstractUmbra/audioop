@@ -30,7 +30,7 @@ audioop-lts = { version = "...", markers = "python_version >= 3.13" }
 ```toml
 [project]
 dependencies = [
-    "audioop-lts; python_version >= '3.13'
+    "audioop-lts; python_version >= '3.13'"
     # or
-    "audioop-lts==...; python_version >= '3.13'
+    "audioop-lts==...; python_version >= '3.13'"
 ]
