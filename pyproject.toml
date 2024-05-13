@@ -22,6 +22,8 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/AbstractUmbra/audioop"
 
+[tool.setuptools]
+packages = ["audioop"]
 [tool.setuptools.exclude-package-data]
 # Keep just the shared object when packing a wheel, not the C source code.
 audioop = ["*.c", "*.h"]
