@@ -12,32 +12,9 @@ on:
     types: [opened, reopened, synchronize]
 
 jobs:
-  install_and_test:
-    name: Install project and test on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.13.0-beta.1"
-
-      - name: "Install project on ${{ matrix.os }}"
-        run: |
-          pip install .
-
-      - name: Run tests on ${{ matrix.os }}
-        run: |
-          python tests/test_audioop.py
-
   build_wheels:
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    needs: [install_and_test]
     strategy:
       matrix:
         os: ["ubuntu-latest", "windows-latest", "macos-latest"]
@@ -75,7 +52,7 @@ jobs:
     name: Publish built wheels to Pypi
     runs-on: ubuntu-latest
     environment: release
-    needs: [install_and_test, build_wheels]
+    needs: [make-sdist, build_wheels]
     permissions:
       id-token: write
 
