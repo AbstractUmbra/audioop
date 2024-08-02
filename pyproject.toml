@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "audioop-lts"
 description = "LTS Port of Python audioop"
 requires-python = ">=3.13"
-version = "0.1.0"
+version = "0.2.0"
 readme = "README.md"
 license = { text = "PSF-2.0" }
 maintainers = [{ name = "AbstractUmbra", email = "umbra@abstractumbra.dev" }]
