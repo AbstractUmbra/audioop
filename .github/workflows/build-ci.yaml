@@ -40,7 +40,28 @@ jobs:
     needs: [install_and_test]
     strategy:
       matrix:
-        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+        include:
+          # macOS Intel & ARM
+          - os: macos-latest
+            archs: all
+          # Windows x86 32-bit and 64-bit
+          - os: windows-latest
+            archs: auto
+          # Windows ARM
+          - os: windows-latest
+            archs: ARM64
+          # Linux x86 32-bit and 64-bit
+          - os: ubuntu-latest
+            archs: auto
+          # Linux aarch64
+          - os: ubuntu-latest
+            archs: aarch64
+          # Linux ppc64le
+          - os: ubuntu-latest
+            archs: ppc64le
+          # Linux s390x
+          - os: ubuntu-latest
+            archs: s390x
 
     steps:
       - uses: actions/checkout@v4
@@ -55,14 +76,12 @@ jobs:
         uses: pypa/cibuildwheel@v2.19.2
         env:
           CIBW_BUILD: "cp313-*"
-          CIBW_ARCHS_MACOS: all
-          CIBW_ARCHS_LINUX: auto aarch64 ppc64le s390x
-          CIBW_ARCHS_WINDOWS: auto ARM64
+          CIBW_ARCHS: ${{ matrix.archs }}
           CIBW_PRERELEASE_PYTHONS: true
 
       - uses: actions/upload-artifact@v4
         with:
-          name: artifact-cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
+          name: artifact-cibw-wheels-${{ matrix.os }}-${{ matrix.archs }}-${{ strategy.job-index }}
           path: ./wheelhouse/*.whl
 
   make-sdist:
