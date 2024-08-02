@@ -37,3 +37,7 @@ ignore = [
 ]
 reportPrivateUsage = "none"
 reportUnnecessaryTypeIgnoreComment = "warning"
+
+# configuration common between all platforms, rest is defined in the GH Actions workflow
+[tool.cibuildwheel]
+test-command = "python {project}/tests/test_audioop.py"
