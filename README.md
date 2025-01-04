@@ -18,7 +18,7 @@ audioop-lts; python_version>='3.13'
 [tool.poetry.dependencies]
 audioop-lts = { version = "...", python = "^3.13" }
 ```
-Relevant documetation is [here](https://python-poetry.org/docs/dependency-specification/#python-restricted-dependencies), or alternatively use [`markers`](https://python-poetry.org/docs/dependency-specification/#using-environment-markers)
+Relevant documtation is [here](https://python-poetry.org/docs/dependency-specification/#python-restricted-dependencies), or alternatively use [`markers`](https://python-poetry.org/docs/dependency-specification/#using-environment-markers)
 
 ### Pipenv-pipfile
 ```toml
