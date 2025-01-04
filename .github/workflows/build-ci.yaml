@@ -6,6 +6,11 @@ on:
       - main
     tags:
       - "*.*.*"
+    paths:
+      - audioop/**
+      - tests/**
+      - .github/workflows/build-ci.yaml
+
   pull_request:
     branches:
       - main
