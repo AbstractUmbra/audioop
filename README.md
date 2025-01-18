@@ -6,7 +6,9 @@ This project exists to maintain this module for future versions.
 
 ## Using this project
 
-### **This module only functions at Python versions of 3.13 or greater** due to being removed in this version
+> [!WARNING]
+**This module only functions at Python versions of 3.13 or greater** due to being removed in this version.
+
 As such, you can conditionally add this project to your dependencies:
 
 #### pip-requirements
@@ -24,7 +26,6 @@ Relevant documentation is [here](https://python-poetry.org/docs/dependency-speci
 #### pdm-pyproject
 ```toml
 [project]
-...
 dependencies = [
     "audioop-lts; python_version >= '3.13'",
 ]
