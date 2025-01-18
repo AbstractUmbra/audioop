@@ -1,5 +1,5 @@
 {
-    "image": "python:3.13-rc-bookworm",
+    "image": "python:3.13-bookworm",
     "customizations": {
         "vscode": {
             "extensions": [
