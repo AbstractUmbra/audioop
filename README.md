@@ -6,7 +6,8 @@ This project exists to maintain this module for future versions.
 
 ## Using this project
 
-As this only becomes mandatory at Python versions of 3.13 or greater, you can conditionally add this project to your dependencies:
+### **This module only functions at Python versions of 3.13 or greater** due to being removed in this version
+As such, you can conditionally add this project to your dependencies:
 
 ### pip-requirements
 ```
