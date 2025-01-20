@@ -72,8 +72,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.13'
 
-    - run: pipx run build --sdist
+    - run: pipx run --python 3.13 build --sdist
 
     - uses: actions/upload-artifact@v4
       with:

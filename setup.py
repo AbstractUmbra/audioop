@@ -2,6 +2,24 @@ import sysconfig
 
 from setuptools import Extension, setup
 
+import sys
+
+if sys.version_info[:2] < (3, 13):
+    raise RuntimeError(
+        """
+        audioop-lts is only for python3.13+.
+
+        audioop is part of the standard library still prior to then.
+
+        If you are installing this from a system package manager
+        (eg. pacman, apt, dnf, zypper) please report this
+        to the redistribution provided by your distribution,
+        as they should not be redistributing it for your python version.
+
+        If you are getting this from pip installing another dependency
+        you should inform that dependency.
+        """
+    )
 
 Py_GIL_DISABLED = sysconfig.get_config_var("Py_GIL_DISABLED")
 macros = []
