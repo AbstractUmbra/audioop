@@ -68,8 +68,13 @@ _LTS_PyArg_BadArgument(const char *fname, const char *displayname,
     const char *arg_type_name_chars = PyUnicode_AsUTF8AndSize(arg_type_name, NULL);
     if (arg_type_name_chars == NULL) {
         Py_DECREF(arg_type_name);
-        Py_DECREF(arg_type);
-        return;
+        arg_type_name = PyType_GetQualName(arg_type);
+        arg_type_name_chars = PyUnicode_AsUTF8AndSize(arg_type_name, NULL);
+        if (arg_type_name_chars == NULL) {
+            Py_DECREF(arg_type_name);
+            Py_DECREF(arg_type);
+            return;
+        }
     }
 
     PyErr_Format(PyExc_TypeError,
