@@ -1387,8 +1387,8 @@ audioop_ratecv_impl(PyObject *module, Py_buffer *fragment, int width,
                         "not enough memory for output buffer");
         return NULL;
     }
-    prev_i = (int *) PyMem_Malloc(nchannels * sizeof(int));
-    cur_i = (int *) PyMem_Malloc(nchannels * sizeof(int));
+    prev_i = (int *) PyMem_RawMalloc(nchannels * sizeof(int));
+    cur_i = (int *) PyMem_RawMalloc(nchannels * sizeof(int));
     if (prev_i == NULL || cur_i == NULL) {
         (void) PyErr_NoMemory();
         goto exit;
@@ -1509,8 +1509,8 @@ audioop_ratecv_impl(PyObject *module, Py_buffer *fragment, int width,
         }
     }
   exit:
-    PyMem_Free(prev_i);
-    PyMem_Free(cur_i);
+    PyMem_RawFree(prev_i);
+    PyMem_RawFree(cur_i);
     return rv;
 }
 
