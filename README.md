@@ -23,7 +23,7 @@ audioop-lts = { version = "...", python = "^3.13" }
 ```
 Relevant documentation is [here](https://python-poetry.org/docs/dependency-specification/#python-restricted-dependencies), or alternatively use [`markers`](https://python-poetry.org/docs/dependency-specification/#using-environment-markers)
 
-#### pdm-pyproject
+#### pdm-pyproject / uv-pyproject / hatch-pyproject
 ```toml
 [project]
 dependencies = [
@@ -36,12 +36,3 @@ dependencies = [
 [packages]
 audioop-lts = { version = "...", markers = "python_version >= 3.13" }
 ```
-
-#### Hatch-pyproject
-```toml
-[project]
-dependencies = [
-    "audioop-lts; python_version >= '3.13'",
-    # or
-    "audioop-lts==...; python_version >= '3.13'"
-]

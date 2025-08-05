@@ -1,8 +1,7 @@
+import sys
 import sysconfig
 
 from setuptools import Extension, setup
-
-import sys
 
 if sys.version_info[:2] < (3, 13):
     raise RuntimeError(
@@ -22,8 +21,8 @@ if sys.version_info[:2] < (3, 13):
     )
 
 Py_GIL_DISABLED = sysconfig.get_config_var("Py_GIL_DISABLED")
-macros = []
-options = {}
+macros: list[tuple[str, str | None]] = []
+options: dict[str, dict[str, str]] = {}
 if not Py_GIL_DISABLED:
     macros.append(("Py_LIMITED_API", "0x030D0000"))
     options["bdist_wheel"] = {"py_limited_api": "cp313"}

@@ -8,7 +8,7 @@ description = "LTS Port of Python audioop"
 requires-python = ">=3.13"
 version = "0.2.1"
 readme = "README.md"
-license = { text = "PSF-2.0" }
+license = "PSF-2.0"
 maintainers = [{ name = "AbstractUmbra", email = "umbra@abstractumbra.dev" }]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -16,11 +16,18 @@ classifiers = [
     "Natural Language :: English",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Programming Language :: Python :: Implementation :: CPython",
 ]
 
+[dependency-groups]
+dev = ["setuptools"]
+
 [project.urls]
-Homepage = "https://github.com/AbstractUmbra/audioop"
+github = "https://github.com/AbstractUmbra/audioop"
+homepage = "https://github.com/AbstractUmbra/audioop"
+issues = "https://github.com/AbstractUmbra/audioop/issues"
+funding = "https://github.com/sponsors/AbstractUmbra"
 
 [tool.setuptools]
 packages = ["audioop"]
