@@ -34,5 +34,5 @@ dependencies = [
 #### Pipenv-pipfile
 ```toml
 [packages]
-audioop-lts = { version = "...", markers = "python_version >= 3.13" }
+audioop-lts = { version = "...", markers = "python_version >= '3.13'" }
 ```
