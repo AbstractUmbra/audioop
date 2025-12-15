@@ -65,7 +65,7 @@ jobs:
           CIBW_ENABLE: cpython-freethreading
           CIBW_TEST_SKIP: "*-win_arm64"
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: artifact-cibw-wheels-${{ matrix.os }}-${{ matrix.archs }}-${{ strategy.job-index }}
           path: ./wheelhouse/*.whl
@@ -81,7 +81,7 @@ jobs:
 
     - run: pipx run --python 3.13 build --sdist
 
-    - uses: actions/upload-artifact@v5
+    - uses: actions/upload-artifact@v6
       with:
         name: artifact-source-dist
         path: "./**/dist/*.tar.gz"
