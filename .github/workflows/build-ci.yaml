@@ -62,7 +62,6 @@ jobs:
         env:
           CIBW_BUILD: "cp313-* cp313t-* cp314-* cp314t-*"
           CIBW_ARCHS: ${{ matrix.archs }}
-          CIBW_ENABLE: cpython-freethreading
           CIBW_TEST_SKIP: "*-win_arm64"
 
       - uses: actions/upload-artifact@v7
